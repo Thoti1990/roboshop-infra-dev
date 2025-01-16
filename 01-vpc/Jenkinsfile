@@ -13,7 +13,7 @@ pipeline {
         stage('Init') {
             steps {
                 sh """
-                    01-vpc
+                    cd 01-vpc
                     teraform init -reconfigure
                 """
             }
@@ -21,13 +21,13 @@ pipeline {
         stage('Plan') {
             steps {
                 sh """
-                    01-vpc 
+                    cd 01-vpc 
                     teraform plan
                 """
             }
         }
         stage('Apply') {
-             input {
+            input {
                 message "Should we continue?"
                 ok "Yes, we should."
                 // submitter "alice,bob"
@@ -37,8 +37,8 @@ pipeline {
             }
 
             steps {
-               sh """
-                    01-vpc 
+                sh """
+                    cd 01-vpc 
                     teraform apply -auto-approve
                 """
                 
