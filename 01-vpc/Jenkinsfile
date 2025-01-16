@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh """
                     cd 01-vpc
-                    teraform init -reconfigure
+                    terraform init -reconfigure
                 """
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh """
                     cd 01-vpc 
-                    teraform plan
+                    terraform plan
                 """
             }
         }
@@ -37,9 +37,9 @@ pipeline {
             }
 
             steps {
-                sh """
+                  sh """
                     cd 01-vpc 
-                    teraform apply -auto-approve
+                    terraform apply -auto-approve
                 """
                 
             }
